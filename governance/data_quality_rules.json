@@ -1,0 +1,35 @@
+{
+  "_comment": "Data-quality rules attached to Schema Registry subjects (Confluent Cloud Stream Governance). CEL expressions evaluated on write; failures route to a DLQ (or ERROR). Loaded by schemas/register_schemas.py.",
+  "rulesets": [
+    {
+      "topic": "gridsentinel.telemetry",
+      "rules": [
+        { "name": "temp_in_range", "doc": "Top-oil/conductor temperature must be physically plausible", "expr": "message.temp_c >= -40.0 && message.temp_c <= 200.0", "severity": "dlq" },
+        { "name": "voltage_positive", "doc": "Voltage must be positive", "expr": "message.voltage_kv > 0.0", "severity": "dlq" },
+        { "name": "load_non_negative", "doc": "Load percent cannot be negative", "expr": "message.load_pct >= 0.0", "severity": "dlq" },
+        { "name": "ambient_in_range", "doc": "Ambient temperature sanity bound", "expr": "message.ambient_c >= -50.0 && message.ambient_c <= 70.0", "severity": "dlq" }
+      ]
+    },
+    {
+      "topic": "gridsentinel.weather",
+      "rules": [
+        { "name": "humidity_pct_range", "doc": "Humidity is a percentage", "expr": "message.humidity_pct >= 0.0 && message.humidity_pct <= 100.0", "severity": "dlq" },
+        { "name": "wind_non_negative", "doc": "Wind speed cannot be negative", "expr": "message.wind_kph >= 0.0", "severity": "dlq" }
+      ]
+    },
+    {
+      "topic": "gridsentinel.crew.location",
+      "rules": [
+        { "name": "lat_range", "doc": "Latitude bounds", "expr": "message.lat >= -90.0 && message.lat <= 90.0", "severity": "dlq" },
+        { "name": "lon_range", "doc": "Longitude bounds", "expr": "message.lon >= -180.0 && message.lon <= 180.0", "severity": "dlq" }
+      ]
+    },
+    {
+      "topic": "gridsentinel.incidents",
+      "rules": [
+        { "name": "fault_score_unit_interval", "doc": "Fault score is a probability", "expr": "message.fault_score >= 0.0 && message.fault_score <= 1.0", "severity": "error" },
+        { "name": "severity_enum", "doc": "Severity must be a known level", "expr": "message.severity in ['info','warning','critical']", "severity": "error" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "record",
+  "name": "Telemetry",
+  "namespace": "com.burnsmcdonnell.gridsentinel",
+  "doc": "Raw SCADA-style sensor reading from a grid asset.",
+  "fields": [
+    { "name": "asset_id", "type": "string" },
+    { "name": "asset_type", "type": "string" },
+    { "name": "ts", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "region", "type": "string" },
+    { "name": "substation", "type": "string" },
+    { "name": "voltage_kv", "type": "double" },
+    { "name": "current_a", "type": "double" },
+    { "name": "load_mw", "type": "double" },
+    { "name": "load_pct", "type": "double", "doc": "load as percent of rated" },
+    { "name": "temp_c", "type": "double" },
+    { "name": "ambient_c", "type": "double" },
+    { "name": "vibration_mm_s", "type": ["null", "double"], "default": null },
+    { "name": "oil_pressure_kpa", "type": ["null", "double"], "default": null }
+  ]
+}

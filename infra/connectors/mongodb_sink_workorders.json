@@ -1,0 +1,24 @@
+{
+  "name": "gridsentinel-mongodb-workorders-sink",
+  "config": {
+    "connector.class": "MongoDbAtlasSink",
+    "name": "gridsentinel-mongodb-workorders-sink",
+    "input.data.format": "AVRO",
+    "input.key.format": "BYTES",
+    "kafka.auth.mode": "KAFKA_API_KEY",
+    "kafka.api.key": "<CONFLUENT_KAFKA_API_KEY>",
+    "kafka.api.secret": "<CONFLUENT_KAFKA_API_SECRET>",
+    "connection.host": "<ATLAS_CLUSTER>.mongodb.net",
+    "connection.user": "<ATLAS_USER>",
+    "connection.password": "<ATLAS_PASSWORD>",
+    "database": "gridsentinel",
+    "collection": "work_orders",
+    "topics": "gridsentinel.work.orders",
+    "doc.id.strategy": "PartialValueStrategy",
+    "value.projection.type": "allowlist",
+    "value.projection.list": "work_order_id",
+    "doc.id.strategy.overwrite.existing": "true",
+    "tasks.max": "1"
+  },
+  "_comment": "Persists agent-generated work orders back into MongoDB, closing the act loop with a durable system-of-record sink."
+}

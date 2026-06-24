@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "CrewLocation",
+  "namespace": "com.burnsmcdonnell.gridsentinel",
+  "doc": "Live field-crew position and availability (PII-tagged).",
+  "fields": [
+    { "name": "crew_id", "type": "string" },
+    { "name": "ts", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "region", "type": "string" },
+    { "name": "lat", "type": "double" },
+    { "name": "lon", "type": "double" },
+    { "name": "status", "type": "string", "doc": "available|enroute|on_site|off_shift" },
+    { "name": "skills", "type": { "type": "array", "items": "string" } }
+  ]
+}

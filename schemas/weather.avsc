@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "Weather",
+  "namespace": "com.burnsmcdonnell.gridsentinel",
+  "doc": "Per-region weather observation enriching grid stress analysis.",
+  "fields": [
+    { "name": "region", "type": "string" },
+    { "name": "ts", "type": { "type": "long", "logicalType": "timestamp-millis" } },
+    { "name": "ambient_c", "type": "double" },
+    { "name": "humidity_pct", "type": "double" },
+    { "name": "wind_kph", "type": "double" },
+    { "name": "condition", "type": "string", "doc": "clear|cloudy|rain|storm|heatwave" }
+  ]
+}

@@ -1,0 +1,9 @@
+-- =====================================================================
+-- 01 - Enrichment (reference only — do NOT paste this whole file).
+-- Confluent Flink accepts ONE statement per Run. Use flink/steps/ instead:
+--   009 — PRIMARY KEY on gridsentinel.mongo.asset_specs (versioned table)
+--   010 — PRIMARY KEY on gridsentinel.mongo.assets (versioned table)
+-- The telemetry-to-spec join is a temporal join in 012 (FOR SYSTEM_TIME AS OF
+-- $rowtime). Do NOT use ROW_NUMBER "latest" views — they emit UPDATE/DELETE
+-- changelog and break append-only sinks (step 015).
+-- =====================================================================

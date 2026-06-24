@@ -1,0 +1,23 @@
+{
+  "name": "gridsentinel-mongodb-assets-source",
+  "config": {
+    "connector.class": "MongoDbAtlasSource",
+    "name": "gridsentinel-mongodb-assets-source",
+    "kafka.auth.mode": "KAFKA_API_KEY",
+    "kafka.api.key": "<CONFLUENT_KAFKA_API_KEY>",
+    "kafka.api.secret": "<CONFLUENT_KAFKA_API_SECRET>",
+    "connection.host": "<ATLAS_CLUSTER>.mongodb.net",
+    "connection.user": "<ATLAS_USER>",
+    "connection.password": "<ATLAS_PASSWORD>",
+    "database": "gridsentinel",
+    "collection": "assets",
+    "topic.prefix": "gridsentinel.mongo",
+    "poll.await.time.ms": "5000",
+    "poll.max.batch.size": "1000",
+    "startup.mode": "copy_existing",
+    "output.data.format": "AVRO",
+    "publish.full.document.only": "true",
+    "tasks.max": "1"
+  },
+  "_comment": "Streams the static asset registry from MongoDB Atlas into Kafka topic gridsentinel.mongo.assets so Flink can join live telemetry against governed reference data. Duplicate this config for the asset_specs and crew collections."
+}

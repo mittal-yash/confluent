@@ -1,0 +1,17 @@
+# GridSentinel - Python dependencies
+# Works on Python 3.11-3.14. Versions below are lower bounds confirmed to ship
+# wheels for Python 3.14 (use `pip install -r requirements.txt`).
+
+confluent-kafka>=2.5
+fastavro>=1.9            # only needed for Avro/Schema Registry (USE_AVRO=true / cloud)
+pymongo>=4.8
+requests>=2.32
+python-dotenv>=1.0
+numpy>=2.1
+Faker>=28
+google-genai>=1.0
+
+# Dashboard
+streamlit>=1.40
+plotly>=5.24
+pandas>=2.2

@@ -1,0 +1,21 @@
+{
+  "_comment": "Stream Catalog tags / business metadata to apply to topics and fields. Apply via Confluent Cloud UI (Stream Catalog) or the Catalog REST API. Tags drive RBAC, discoverability, and the data-classification story.",
+  "tags": [
+    { "name": "critical-infrastructure", "description": "Operational data for grid-critical assets" },
+    { "name": "PII", "description": "Personally identifiable / field-crew location data" },
+    { "name": "agent-action", "description": "Autonomous control actions and work orders (audited)" },
+    { "name": "ai-derived", "description": "Fields produced by ML/LLM inference" }
+  ],
+  "topic_tags": {
+    "gridsentinel.telemetry": ["critical-infrastructure"],
+    "gridsentinel.crew.location": ["PII", "critical-infrastructure"],
+    "gridsentinel.incidents": ["critical-infrastructure", "ai-derived"],
+    "gridsentinel.actions.executed": ["agent-action", "critical-infrastructure"],
+    "gridsentinel.work.orders": ["agent-action"]
+  },
+  "field_tags": {
+    "gridsentinel.crew.location": { "lat": ["PII"], "lon": ["PII"], "crew_id": ["PII"] },
+    "gridsentinel.incidents": { "fault_score": ["ai-derived"] }
+  },
+  "rbac_notes": "Grant the agent service account READ on telemetry/incidents and WRITE on control/work_orders only. PII-tagged crew topic is restricted to dispatch roles. This least-privilege split is part of the governance story."
+}
