@@ -1,6 +1,6 @@
 # GridSentinel - the 4-minute demo
 
-## Setup (before you go on stage)
+## Setup
 
 Cloud must already be up: Confluent Cloud topics + connectors live, the Flink
 jobs (`flink/00`-`07`) running, and the Atlas vector index built. See
