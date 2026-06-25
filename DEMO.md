@@ -8,7 +8,7 @@ jobs (`flink/00`-`07`) running, and the Atlas vector index built. See
 repo root:
 
 ```bash
-# T1 - data in motion (also obeys Flink's control commands)
+# T1 - data in motion 
 python -m simulators.run_simulators
 
 # T2 - dashboard
