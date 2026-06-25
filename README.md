@@ -37,15 +37,7 @@ flowchart LR
   flink -.governed by.-> gov["Schema Registry + DQ rules + Lineage + tags"]
 ```
 
-## How it maps to the prize rubric
 
-- **Most Impactful (Connectors + Stream Processing + Governance):** MongoDB
-  source/sink connectors, a full Flink pipeline, and a visible governance layer
-  (Schema Registry, data-quality rules, Stream Lineage, classification tags).
-- **Most Flink-Driven + AI bonus:** core logic is Flink SQL with `CREATE MODEL`
-  + `ML_PREDICT` (`flink/`).
-- **Creative:** the closed sense -> reason -> act -> verify loop with a live,
-  physically-recovering demo.
 
 ## What runs where
 
